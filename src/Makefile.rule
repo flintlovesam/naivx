@@ -1,0 +1,15 @@
+all : $(OBJECT_FILE_NAME)
+	@echo "linking $(TARGET)..."
+	@$(LD) $^ -o $(TARGET) $(LDFLAGS) -r
+	
+%.o : %/Makefile
+	@$(MAKE) $* TARGET=$@
+	
+%.o : %.c Makefile
+	@echo "compiling $<..."
+	@$(CC) -c $< -o $@ $(CPPFLAGS) $(CFLAGS)
+	
+%.o : %.S Makefile
+	@echo "assembling $<..."
+	@$(AS) -c $< -o $@ $(ASFLAGS)
+	

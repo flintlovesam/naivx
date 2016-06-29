@@ -1,3 +1,4 @@
+#this is for x86
 .PHONY : all clean
 
 CURRENT_DIR						=	$(shell pwd)/
